@@ -1,19 +1,22 @@
 alias ls="ls -hF"
 alias json='python -m json.tool' # for pretty printed json
-export PATH=$PATH:~/bin
-export MANPATH=$MANPATH:/opt/local/man
+export PATH=~/bin:/usr/local/sbin:/usr/local/bin:/usr/local/share/python:/usr/bin:/bin:/usr/sbin:/sbin
 export PS1='\[\e[0;32m\][\w]\[\e[0m\] $(vcprompt)\$ '
 export EDITOR="vim"
 # Python startup
 export PYTHONSTARTUP=~/.pythonrc
+export PYTHONPATH=/usr/local/lib/python:/usr/local/Cellar/python/2.7.2/lib/python2.7/site-packages/:$PYTHONPATH
 # virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
 . /usr/local/bin/virtualenvwrapper.sh
 # PIP
 export PIP_LOG_FILE=/tmp/pip-log.txt
 export PIP_DOWNLOAD_CACHE=/tmp/pip_cache
+# Node.js
+export NODE_PATH=/usr/local/lib/node
 # Various bash completion scripts
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 . ~/django/extras/django_bash_completion
+
