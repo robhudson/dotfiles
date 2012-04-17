@@ -4,6 +4,7 @@ alias json='python -m json.tool' # for pretty printed json
 alias rmpyc='find . -name \*\.pyc -delete'
 alias z='cd ~/git/zamboni && workon zamboni'
 alias zup='z && git checkout master && git pull mozilla master && git submodule sync && git submodule update --init --recursive && ./vendor/src/schematic/schematic migrations'
+alias gsub='git submodule sync && git submodule update --init --recursive && git submodule update --init --recursive'
 # Exports
 export PATH=~/bin:/usr/local/sbin:/usr/local/bin:/usr/local/share/python:/usr/bin:/bin:/usr/sbin:/sbin
 export PS1='\[\e[0;32m\][\w]\[\e[0m\] $(vcprompt)\$ '
@@ -11,11 +12,11 @@ export EDITOR="vim"
 # Python startup
 export PYTHONSTARTUP=~/.pythonrc
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages
-export PYTHONDONTWRITEBYTECODE=true
+#export PYTHONDONTWRITEBYTECODE=true
 # virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
 . /usr/local/bin/virtualenvwrapper.sh
-export VIRTUALENV_USE_DISTRIBUTE=true
+#export VIRTUALENV_USE_DISTRIBUTE=true
 # PIP
 export PIP_LOG_FILE=/tmp/pip-log.txt
 export PIP_DOWNLOAD_CACHE=/tmp/pip_cache
@@ -28,3 +29,5 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
 fi
 . ~/django/extras/django_bash_completion
 
+# Tastybrew
+alias tbtest='./manage.py test --settings=tastybrew.settings.test'

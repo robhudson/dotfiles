@@ -1,4 +1,4 @@
-# Copyright 2010-2011 Wincent Colaiuta. All rights reserved.
+# Copyright 2011-2012 Wincent Colaiuta. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -21,22 +21,24 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
+require 'command-t/ext' # CommandT::Matcher
+require 'command-t/scanner/tag_scanner'
+require 'command-t/finder'
+
 module CommandT
-  class Stub
-    @@load_error = ['command-t.vim could not load the C extension',
-                    'Please see INSTALLATION and TROUBLE-SHOOTING in the help',
-                    'For more information type:    :help command-t']
-
-    [:flush, :show_buffer_finder, :show_file_finder, :show_tag_finder].each do |method|
-      define_method(method.to_sym) { warn *@@load_error }
+  class TagFinder < Finder
+    def initialize options = {}
+      @scanner = TagScanner.new options
+      @matcher = Matcher.new @scanner, :always_show_dot_files => true
     end
 
-  private
+    def open_selection command, selection, options = {}
+      if @scanner.include_filenames
+        selection = selection[0, selection.index(':')]
+      end
 
-    def warn *msg
-      ::VIM::command 'echohl WarningMsg'
-      msg.each { |m| ::VIM::command "echo '#{m}'" }
-      ::VIM::command 'echohl none'
+      #  open the tag and center the screen on it
+      ::VIM::command "silent! tag #{selection} | :normal zz"
     end
-  end # class Stub
+  end # class TagFinder
 end # module CommandT
