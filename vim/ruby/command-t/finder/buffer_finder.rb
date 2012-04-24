@@ -21,22 +21,15 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
+require 'command-t/ext' # CommandT::Matcher
+require 'command-t/scanner/buffer_scanner'
+require 'command-t/finder'
+
 module CommandT
-  class Stub
-    @@load_error = ['command-t.vim could not load the C extension',
-                    'Please see INSTALLATION and TROUBLE-SHOOTING in the help',
-                    'For more information type:    :help command-t']
-
-    [:flush, :show_buffer_finder, :show_file_finder, :show_tag_finder].each do |method|
-      define_method(method.to_sym) { warn *@@load_error }
+  class BufferFinder < Finder
+    def initialize
+      @scanner = BufferScanner.new
+      @matcher = Matcher.new @scanner, :always_show_dot_files => true
     end
-
-  private
-
-    def warn *msg
-      ::VIM::command 'echohl WarningMsg'
-      msg.each { |m| ::VIM::command "echo '#{m}'" }
-      ::VIM::command 'echohl none'
-    end
-  end # class Stub
-end # module CommandT
+  end # class BufferFinder
+end # CommandT

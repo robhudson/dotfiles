@@ -1,5 +1,6 @@
 set nocompatible
 set backspace=indent,eol,start
+set autoread
 
 " Menus
 " This must happen before the syntax system is enabled
@@ -16,13 +17,13 @@ set modelines=0
 " Enable Syntax Colors
 syntax on
 if has("gui_running")
-  colorscheme oceandeep
+  colorscheme blackboard
   set guifont=Menlo:h12
   set fuoptions=maxvert,maxhorz
   " does not work properly on os x
   " au GUIEnter * set fullscreen
   set list listchars=tab:›\ ,trail:·,eol:¬ " mark trailing white space
-  set colorcolumn=79 " My terminal doesn't support this
+  set colorcolumn=80
 else
   colorscheme myterm
 endif
@@ -122,7 +123,7 @@ nnoremap <leader>a :Ack
 " <leader>v selects the just pasted text
 nnoremap <leader>v V`]
 
-" NERDtree on <leader>t
+" NERDtree on <F3>
 nnoremap <F3> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o$']
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\.bak$', '\~$']
@@ -144,7 +145,6 @@ nnoremap <leader>. :lcd %:p:h<CR>
 nnoremap <leader>th :set ft=htmldjango<CR>
 nnoremap <leader>tp :set ft=python<CR>
 nnoremap <leader>tj :set ft=javascript<CR>
-nnoremap <leader>tr :set ft=rst<CR>
 
 " Command-T support
 nnoremap <leader>o :CommandT<CR>
@@ -170,7 +170,8 @@ vmap <C-Down> ]egv
 " something that looks useful.
 set cmdheight=2
 set laststatus=2
-set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}
+"set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\ %{fugitive#statusline()}
+set statusline=[%l,%v]\ %f\ %r%h%w
 set showcmd
 set number
 
@@ -283,7 +284,7 @@ autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako source ~/.vim/sc
 
 " CSS
 " ---
-autocmd FileType css setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType css,less setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 
 " Java
 " ----
@@ -308,6 +309,6 @@ autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
 
 " Javascript
 " ----------
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType javascript setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 let javascript_enable_domhtmlcss=1
 
