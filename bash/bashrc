@@ -1,11 +1,13 @@
 alias ls="ls -hF"
 alias json='python -m json.tool' # for pretty printed json
+alias tb='cd ~/git/tastybrew && workon tastybrew'
 export PATH=~/bin:/usr/local/sbin:/usr/local/bin:/usr/local/share/python:/usr/bin:/bin:/usr/sbin:/sbin
 export PS1='\[\e[0;32m\][\w]\[\e[0m\] $(vcprompt)\$ '
 export EDITOR="vim"
+export MACOSX_DEPLOYMENT_TARGET=10.7
 # Python startup
 export PYTHONSTARTUP=~/.pythonrc
-export PYTHONPATH=/usr/local/lib/python:/usr/local/Cellar/python/2.7.2/lib/python2.7/site-packages/:$PYTHONPATH
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages
 # virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
 . /usr/local/bin/virtualenvwrapper.sh
@@ -19,4 +21,3 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 . ~/django/extras/django_bash_completion
-
