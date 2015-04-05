@@ -1,6 +1,7 @@
 set nocompatible
 set backspace=indent,eol,start
 set autoread
+set autoread
 
 " Menus
 " This must happen before the syntax system is enabled
@@ -149,16 +150,6 @@ nnoremap <leader>tj :set ft=javascript<CR>
 " Command-T support
 nnoremap <leader>o :CommandT<CR>
 
-" toggle between number and relative number on ,l
-nnoremap <leader>l :call ToggleRelativeAbsoluteNumber()<CR>
-function! ToggleRelativeAbsoluteNumber()
-  if &number
-    set relativenumber
-  else
-    set number
-  endif
-endfunction
-
 " Bubble single lines
 nmap <C-Up> [e
 nmap <C-Down> ]e
@@ -174,6 +165,14 @@ set laststatus=2
 set statusline=[%l,%v]\ %f\ %r%h%w
 set showcmd
 set number
+
+" For regular expressions turn magic on
+set magic
+
+" Show matching brackets when text indicator is over them
+set showmatch
+" How many tenths of a second to blink when matching brackets
+set mat=2
 
 " Tab Settings
 set smarttab
@@ -197,8 +196,8 @@ function! GuiTabLabel()
 endfunction
 set guitablabel=%{GuiTabLabel()}
 
-" utf-8 default encoding
-set enc=utf-8
+" utf8 default encoding
+set encoding=utf8
 
 " prefer unix over windows over os9 formats
 set fileformats=unix,dos,mac
@@ -311,4 +310,3 @@ autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
 " ----------
 autocmd FileType javascript setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 let javascript_enable_domhtmlcss=1
-
