@@ -3,6 +3,9 @@ set backspace=indent,eol,start
 set autoread
 set autoread
 
+" Enable pathogen
+execute pathogen#infect()
+
 " Menus
 " This must happen before the syntax system is enabled
 let no_buffers_menu=1
@@ -118,9 +121,6 @@ nnoremap <leader>ev <C-w><C-s><C-l>:e $MYVIMRC<CR>
 " Remove trailing whitespace on <leader>S
 nnoremap <leader>S :%s/\s\+$//<cr>:let @/=''<CR>
 
-" Ack on <leader>a
-nnoremap <leader>a :Ack
-
 " <leader>v selects the just pasted text
 nnoremap <leader>v V`]
 
@@ -130,15 +130,6 @@ let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\.bak$', '\~$']
 let NERDTreeChDirMode=2 " CWD is changed whenever the tree root is changed
 
-" Scratch
-nmap <leader><tab> :Sscratch<CR><C-W>x<C-J>
-
-" Quit window on <leader>q
-nnoremap <leader>q :q<CR>
-
-" Copy to Lodgeit on ^d
-nnoremap <leader>p :Lodgeit<CR>
-
 " Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
 
@@ -146,9 +137,6 @@ nnoremap <leader>. :lcd %:p:h<CR>
 nnoremap <leader>th :set ft=htmldjango<CR>
 nnoremap <leader>tp :set ft=python<CR>
 nnoremap <leader>tj :set ft=javascript<CR>
-
-" Command-T support
-nnoremap <leader>o :CommandT<CR>
 
 " Bubble single lines
 nmap <C-Up> [e
@@ -226,22 +214,14 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-" map :BufClose to :bq and configure it to open a file browser on close
-let g:BufClose_AltBuffer = '.'
-cnoreabbr <expr> bq 'BufClose' 
-
 " python support
 " --------------
-"  don't highlight exceptions and builtins. I love to override them in local
-"  scopes and it sucks ass if it's highlighted then. And for exceptions I
-"  don't really want to have different colors for my own exceptions ;-)
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
 \ formatoptions+=croq softtabstop=4 ft=python.django
 \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 let python_highlight_all=1
 let python_highlight_exceptions=0
 let python_highlight_builtins=0
-autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 
 " ruby support
 " ------------
@@ -271,15 +251,10 @@ endfun
 
 autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd BufNewFile,BufRead *.rhtml setlocal ft=eruby
-autocmd BufNewFile,BufRead *.mako setlocal ft=mako
 autocmd BufNewFile,BufRead *.tmpl setlocal ft=htmljinja
 autocmd BufNewFile,BufRead *.py_tmpl setlocal ft=python
 autocmd BufNewFile,BufRead *.html,*.htm  call s:SelectHTML()
 let html_no_rendering=1
-
-let g:closetag_default_xml=1
-autocmd FileType html,htmldjango,htmljinja,eruby,mako let b:closetag_html_style=1
-autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako source ~/.vim/scripts/closetag.vim
 
 " CSS
 " ---
