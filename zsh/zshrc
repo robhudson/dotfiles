@@ -50,7 +50,7 @@ DEFAULT_USER="rob"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(brew django git vi-mode)
 
 # User configuration
 
@@ -58,6 +58,10 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+
+# Fancy Python loaders
+from(){ python -ic "from $*"; }
+import(){ python -ic "import $*"; }
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -84,13 +88,18 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export PIP_RESPECT_VIRTUALENV=true
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/git
 source /usr/local/bin/virtualenvwrapper.sh
 
-export PYTHONDONTWRITEBYTECODE=1
+export PYTHONDONTWRITEBYTECODE=true
 export EDITOR=vim
 
 alias ls='ls -hF'
 alias json='python -m json.tool' # for pretty printed json
+alias uuid="uuidgen | tr '[:upper:]' '[:lower:]'"
 alias rmpyc='find . -name \*\.pyc -delete'
+alias gsub='git submodule sync && git submodule update --init --recursive'
+alias flk="git diff --name-only | grep '.py$' | xargs flake8"
+alias flkprv="git diff --name-only HEAD\^ | grep '.py$' | xargs flake8"
