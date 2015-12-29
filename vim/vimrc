@@ -124,6 +124,8 @@ nnoremap <leader>S :%s/\s\+$//<cr>:let @/=''<CR>
 " <leader>v selects the just pasted text
 nnoremap <leader>v V`]
 
+let g:vim_isort_map = '<C-i>'
+
 " NERDtree on <F3>
 nnoremap <F3> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o$']
