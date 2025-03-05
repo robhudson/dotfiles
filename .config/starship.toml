@@ -1,0 +1,75 @@
+format = """$directory\
+$python\
+$git_branch\
+$git_status\
+$git_metrics\
+$fill\
+$time\
+$line_break\
+$character
+"""
+
+
+palette = 'monokai'
+
+[palettes.gruvterm]
+color0 = '#7c6f64'  # Medium gray with warm brown tones (earthy and muted)
+color1 = '#fb4934'  # Bright red (intense and vibrant, attention-grabbing)
+color2 = '#b8bb26'  # Yellow-green (lively, lime-like)
+color3 = '#fabd2f'  # Warm golden yellow (sunny and cheerful)
+color4 = '#83a598'  # Muted teal (soft blue-green, calming)
+color5 = '#d3869b'  # Muted rose pink (soft, slightly purple-toned)
+color6 = '#8ec07c'  # Soft green (natural and fresh)
+color7 = '#fbf1c7'  # Very light beige (off-white with warm undertones)
+color8 = '#504945'  # Dark brownish-gray
+
+[palettes.monokai]
+color0 = '#2d2a2e'  # Very dark gray with a hint of purple (background-like)
+color1 = '#fc9867'  # Orange-pink (coral-like)
+color2 = '#a9dc76'  # Soft lime green (earthy, vibrant)
+color3 = '#ab9df2'  # Lavender blue (soft purple tone)
+color4 = '#ff6188'  # Bright pinkish-red (vivid accent)
+color5 = '#ffd866'  # Warm yellow (sunny, golden)
+color6 = '#78dce8'  # Light cyan (bright and fresh)
+color7 = '#fcfcfa'  # Almost white (off-white, very light gray)
+color8 = '#727072'  # Medium gray with purple tones (muted contrast)
+
+[package]
+disabled = true
+
+[fill]
+symbol = ' '
+
+[directory]
+style = 'bold color1'
+truncation_length = 3
+truncation_symbol = '…/'
+home_symbol = '􀎟'
+
+[python]
+style = 'color2'
+format = '[(\($virtualenv:(${version})\) )]($style)'
+detect_files = ['.venv']
+detect_extensions = []
+
+[git_branch]
+style = 'bold color3'
+format = 'on [$symbol$branch(:$remote_branch)]($style) '
+
+[git_status]
+style = 'bold color4'
+format = '([\[$all_status$ahead_behind\]]($style))'
+
+[git_metrics]
+disabled = false
+added_style = 'bold color5'
+format = '([+$added]($added_style))([-$deleted]($deleted_style) )'
+
+[time]
+disabled = false
+style = 'bold color7'
+format = '[􀡑  $time]($style)'
+
+[character]
+success_symbol = '[􁉃 ](bold color6)'
+error_symbol = '[􀆘 ](bold color4)'

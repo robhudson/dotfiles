@@ -1,0 +1,18 @@
+[user]
+	email = rob@cogit8.org
+	name = Rob Hudson
+
+[core]
+	excludesFile = /Users/rob/.gitignore
+
+[alias]
+	st = status
+	lgs = log --stat
+	caca = commit -a -C HEAD --amend --reset-author
+
+[push]
+	default = current
+
+[pull]
+	ff = only
+
