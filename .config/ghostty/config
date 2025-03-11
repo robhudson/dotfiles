@@ -1,5 +1,7 @@
+working-directory = home
+window-inherit-working-directory = false
 
-# bold-is-bright = true
+bold-is-bright = true
 
 font-family = 'Cousine Nerd Font Mono Regular'
 font-family-bold = 'Cousine Nerd Font Mono Bold'
