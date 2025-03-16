@@ -20,7 +20,8 @@ end
 /opt/homebrew/bin/brew shellenv | source
 
 # Set up for orbstack
-source ~/.orbstack/shell/init.fish
+# Check ~/.orbstack/shell/init.fish
+set -gxa PATH /Users/rob/.orbstack/bin
 
 # For local bin commands I set up
 set -x PATH $PATH /Users/rob/.local/bin
