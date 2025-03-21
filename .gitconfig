@@ -1,20 +1,28 @@
-[user]
-	email = rob@cogit8.org
-	name = Rob Hudson
-
-[core]
-	excludesFile = /Users/rob/.gitignore
-
 [alias]
 	st = status
 	lgs = log --stat
 	caca = commit -a -C HEAD --amend --reset-author
-
-[push]
-	default = current
-
-[pull]
-	ff = only
-
+[branch]
+	sort = -committerdate
+[core]
+	excludesFile = ~/.gitignore
+[diff]
+	algorithm = histogram
+	mnemonicPrefix = true
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
 [init]
 	defaultBranch = main
+[pull]
+	ff = only
+	rebase = true
+[push]
+	default = current
+	autoSetupRemote = true
+[tag]
+	sort = version:refname
+[user]
+	email = rob@cogit8.org
+	name = Rob Hudson
