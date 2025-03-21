@@ -43,6 +43,12 @@ if status is-interactive
     # Pull in my SSH key for github etc
     ssh-add --apple-use-keychain ~/.ssh/id_ed25519
 
+    # Activate nvm
+    set -gx NVM_DIR $HOME/.nvm
+    function nvm
+        bash -c "source ~/.nvm/nvm.sh; nvm $argv"
+    end
+
     # Replace `cat` with `bat`
     function cat
         bat --theme 'Monokai Extended' $argv
