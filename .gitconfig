@@ -10,8 +10,6 @@
 	algorithm = histogram
 	mnemonicPrefix = true
 [fetch]
-	prune = true
-	pruneTags = true
 	all = true
 [init]
 	defaultBranch = main
@@ -26,3 +24,8 @@
 [user]
 	email = rob@cogit8.org
 	name = Rob Hudson
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
