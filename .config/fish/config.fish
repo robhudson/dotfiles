@@ -38,7 +38,7 @@ if status is-interactive
     starship init fish | source
 
     # Activate atuin - shell history search
-    atuin init fish | source
+    atuin init fish --disable-up-arrow | source
 
     # Pull in my SSH key for github etc
     ssh-add --apple-use-keychain ~/.ssh/id_ed25519
