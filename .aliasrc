@@ -1,0 +1,7 @@
+# alias ls="ls -hF"
+alias printenv="printenv | sort"
+alias json="python -m json.tool --sort-keys"
+alias rmpyc="find . -name \*\.pyc -delete"
+
+alias dc="docker compose"
+alias k="kubectl"
