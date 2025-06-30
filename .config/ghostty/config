@@ -1,5 +1,5 @@
 working-directory = home
-window-inherit-working-directory = false
+window-inherit-working-directory = true
 
 bold-is-bright = true
 
