@@ -44,7 +44,7 @@ symbol = ' '
 style = 'bold color1'
 truncation_length = 3
 truncation_symbol = '…/'
-home_symbol = '􀎟'
+home_symbol = ' '
 
 [python]
 style = 'color2'
@@ -68,8 +68,8 @@ format = '([+$added]($added_style))([-$deleted]($deleted_style) )'
 [time]
 disabled = false
 style = 'bold color7'
-format = '[􀡑  $time]($style)'
+format = '[  $time]($style)'
 
 [character]
-success_symbol = '[􁉃 ](bold color6)'
-error_symbol = '[􀆘 ](bold color4)'
+success_symbol = '[ ](bold color6)'
+error_symbol = '[ ](bold color4)'
